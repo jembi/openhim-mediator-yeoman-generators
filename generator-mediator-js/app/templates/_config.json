@@ -1,0 +1,8 @@
+{
+  "port": "<%= configPort %>",
+  "api": {
+    "username": "<%= configApiUsername %>",
+    "password": "<%= configApiPassword %>",
+    "apiURL": "<%= configApiUrl %>"
+  }
+}
