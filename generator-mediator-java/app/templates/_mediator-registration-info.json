@@ -7,7 +7,7 @@
     {
       "name": "<%= mediatorName %> Route",
       "host": "localhost",
-      "port": "<%= mediatorRoutePort %>",
+      "port": "<%= configPort %>",
       "path": "<%= mediatorRoutePath %>",
       "type": "http"
     }
@@ -15,14 +15,14 @@
   "defaultChannelConfig": [
     {
       "name": "<%= mediatorName %>",
-      "urlPattern": "<%= mediatorUrlPattern %>",
+      "urlPattern": "^<%= mediatorRoutePath %>$",
       "type": "http",
-      "allow": ["admin"],
+      "allow": ["<%= defaultPermission %>"],
       "routes": [
         {
           "name": "<%= mediatorName %> Route",
           "host": "localhost",
-          "port": "<%= mediatorRoutePort %>",
+          "port": "<%= configPort %>",
           "path": "<%= mediatorRoutePath %>",
           "type": "http",
           "primary": "true"

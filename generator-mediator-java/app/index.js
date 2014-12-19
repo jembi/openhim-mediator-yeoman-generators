@@ -19,27 +19,40 @@ var mediatorJavaGenerator = yeoman.generators.Base.extend({
 
     var prompts = [{ 
         type: 'input', 
+        name: 'mediatorName', 
+        message: 'What is your Mediator\'s name?', 
+        default: 'Yeoman Generated Mediator',
+        validate: function(mediatorName){ 
+          if(mediatorName !== ''){ return true; }else{ return 'Please supply a Mediator Name'; } 
+        } 
+      }, { 
+        type: 'input', 
+        name: 'mediatorDesc', 
+        message: 'What does your Mediator do?',
+        default: 'Brief Description'
+      }, { 
+        type: 'input', 
         name: 'configGroupID', 
-        message: 'What is your java group ID?', 
-        default: 'org.openhim' ,
+        message: 'What is your group ID?', 
+        default: 'com.mycompany',
         validate: function(groupID){ 
-          if(groupID !== ''){ return true; }else{ return 'Please supply your Java group ID'; } 
+          if(groupID !== ''){ return true; }else{ return 'Please supply a group ID'; } 
         } 
       }, { 
         type: 'input', 
         name: 'configArtifactID', 
-        message: 'What is your java artifact ID?', 
-        default: 'mediator-template' ,
+        message: 'What artifact ID do you want to use?', 
+        default: 'java-mediator',
         validate: function(artifactID){ 
-          if(artifactID !== ''){ return true; }else{ return 'Please supply your Java artifact ID'; } 
+          if(artifactID !== ''){ return true; }else{ return 'Please supply an artifact ID'; } 
         } 
       }, { 
         type: 'input', 
         name: 'configNamespace', 
-        message: 'What is your Java namespace?', 
-        default: 'org.openhim.mediator' ,
+        message: 'What package do you want to use for the source code?', 
+        default: 'com.mycompany.mediator',
         validate: function(namespace){ 
-          if(namespace !== ''){ return true; }else{ return 'Please supply your Java namespace'; } 
+          if(namespace !== ''){ return true; }else{ return 'Please supply a package'; } 
         } 
       }, { 
         type: 'input', 
@@ -48,64 +61,11 @@ var mediatorJavaGenerator = yeoman.generators.Base.extend({
         default: 3000 
       }, { 
         type: 'input', 
-        name: 'configApiUsername', 
-        message: 'What is your OpenHIM API Username?', 
-        default: 'root@openhim.org',
-        validate: function(username){ 
-          if(username !== ''){ return true; }else{ return 'Please supply your username'; } 
-        } 
-      }, { 
-        type: 'password', 
-        name: 'configApiPassword', 
-        message: 'What is your OpenHIM API password?', 
-        default: 'HIM123',
-        validate: function(password){ 
-          if(password !== ''){ return true; }else{ return 'Please supply your password'; } 
-        } 
-      }, { 
-        type: 'input', 
-        name: 'configApiUrl', 
-        message: 'What is your OpenHIM API URL?', 
-        default: 'https://openhim-preprod.jembi.org:8080',
-        validate: function(apiUrl){ 
-          if(apiUrl !== ''){ return true; }else{ return 'Please supply your OpenHIM API URL'; } 
-        } 
-      }, { 
-        type: 'input', 
-        name: 'mediatorName', 
-        message: 'What is your Mediators Name?', 
-        default: 'Yeoman Generated Mediator',
-        validate: function(mediatorName){ 
-          if(mediatorName !== ''){ return true; }else{ return 'Please supply a Mediator Name'; } 
-        } 
-      }, { 
-        type: 'input', 
-        name: 'mediatorDesc', 
-        message: 'What does your Mediator Do?',
-        default: 'Brief Description'
-      }, { 
-        type: 'input', 
-        name: 'mediatorUrlPattern', 
-        message: 'What is your Mediator URL pattern?', 
-        default: '/urlpattern',
-        validate: function(mediatorUrlPattern){ 
-          if(mediatorUrlPattern !== ''){ return true; }else{ return 'Please supply your Mediator URL pattern'; } 
-        } 
-      }, { 
-        type: 'input', 
         name: 'mediatorRoutePath', 
         message: 'What is your primary route path?', 
-        default: 'primary-route',
+        default: '/mediator',
         validate: function(mediatorRoutePath){ 
-          if(mediatorRoutePath !== ''){ return true; }else{ return 'Please supply your primary route path'; } 
-        } 
-      }, { 
-        type: 'input', 
-        name: 'mediatorRoutePort', 
-        message: 'What is your primary route port?', 
-        default: 3000,
-        validate: function(mediatorRoutePort){ 
-          if(mediatorRoutePort !== ''){ return true; }else{ return 'Please supply your primary route port'; } 
+          if(mediatorRoutePath !== ''){ return true; }else{ return 'Please supply a primary route path'; } 
         } 
       }];
 
@@ -115,15 +75,10 @@ var mediatorJavaGenerator = yeoman.generators.Base.extend({
       this.configNamespace = props.configNamespace;
 
       this.configPort = props.configPort;
-      this.configApiUsername = props.configApiUsername;
-      this.configApiPassword = props.configApiPassword;
-      this.configApiUrl = props.configApiUrl;
 
       this.mediatorName = props.mediatorName;
       this.mediatorDesc = props.mediatorDesc;
-      this.mediatorUrlPattern = props.mediatorUrlPattern;
       this.mediatorRoutePath = props.mediatorRoutePath;
-      this.mediatorRoutePort = props.mediatorRoutePort;
 
       done();
     }.bind(this));
@@ -134,16 +89,18 @@ var mediatorJavaGenerator = yeoman.generators.Base.extend({
     var folders = this.configNamespace.split(".");
     var folderStructure = '';
     for ( var i=0; i<folders.length; i++ ){
-      console.log( folders[i] )
       folderStructure += folders[i]+'/';
     }
 
     this.mkdir("src/main/java");
     this.mkdir("src/main/resources");
+    this.mkdir("src/test/java");
 
     // dynamic folder structure
-    this.folderStructure = "src/main/java/"+folderStructure;
-    this.mkdir( this.folderStructure );
+    this.mainFolderStructure = "src/main/java/"+folderStructure;
+    this.mkdir( this.mainFolderStructure );
+    this.testFolderStructure = "src/test/java/"+folderStructure;
+    this.mkdir( this.testFolderStructure );
 
   },
 
@@ -155,25 +112,23 @@ var mediatorJavaGenerator = yeoman.generators.Base.extend({
       configNamespace: this.configNamespace,
 
       configPort: this.configPort,
-      configApiUsername: this.configApiUsername,
-      configApiPassword: this.configApiPassword,
-      configApiUrl: this.configApiUrl,
 
       mediatorUUID: "urn:uuid:"+uuid.v1(),
       appName: this.mediatorName.replace(/ /g,"-"),
       mediatorName: this.mediatorName,
       mediatorDesc: this.mediatorDesc,
-      mediatorUrlPattern: this.mediatorUrlPattern,
       mediatorRoutePath: this.mediatorRoutePath,
-      mediatorRoutePort: this.mediatorRoutePort
+
+      defaultPermission: this.mediatorName.replace(/ /g,"").toLowerCase()
     };
 
     // copy the templates and override placeholders
     this.template("_pom.xml", "pom.xml", context);
     this.template("_mediator.properties", "src/main/resources/mediator.properties", context);
     this.template("_mediator-registration-info.json", "src/main/resources/mediator-registration-info.json", context);
-    this.template("_DefaultOrchestrator.java", this.folderStructure+"DefaultOrchestrator.java", context);
-    this.template("_MediatorMain.java", this.folderStructure+"MediatorMain.java", context);
+    this.template("_DefaultOrchestrator.java", this.mainFolderStructure+"DefaultOrchestrator.java", context);
+    this.template("_MediatorMain.java", this.mainFolderStructure+"MediatorMain.java", context);
+    this.template("_DefaultOrchestratorTest.java", this.testFolderStructure+"DefaultOrchestratorTest.java", context);
 
   },
 
@@ -186,7 +141,10 @@ var mediatorJavaGenerator = yeoman.generators.Base.extend({
       callback: function () {
         // Have Yeoman greet the user.
         console.log(yosay(
-          'Scaffolding Complete!\r' + chalk.green('Remember "npm install"') + '\r Goodbye!'
+          'Scaffolding Complete!\r' +
+          'To build your project run ' + chalk.green('mvn install\r') +
+          'Also remember to check your config in src/main/resources\r' +
+          '\r Goodbye!'
         ));
       }
     });
