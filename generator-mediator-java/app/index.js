@@ -7,18 +7,41 @@ var chalk = require('chalk');
 var yosay = require('yosay');
 var uuid = require('node-uuid');
 
-var mediatorJsGenerator = yeoman.generators.Base.extend({
+var mediatorJavaGenerator = yeoman.generators.Base.extend({
   
   prompting: function () {
     var done = this.async();
 
     // Have Yeoman greet the user.
     this.log(yosay(
-      'Welcome to the marvelous ' + chalk.red('MediatorJs') + ' generator!'
+      'Welcome to the marvelous ' + chalk.red('MediatorJava') + ' generator!'
     ));
 
-    var prompts = [
-      { 
+    var prompts = [{ 
+        type: 'input', 
+        name: 'configGroupID', 
+        message: 'What is your java group ID?', 
+        default: 'org.openhim' ,
+        validate: function(groupID){ 
+          if(groupID !== ''){ return true; }else{ return 'Please supply your Java group ID'; } 
+        } 
+      }, { 
+        type: 'input', 
+        name: 'configArtifactID', 
+        message: 'What is your java artifact ID?', 
+        default: 'mediator-template' ,
+        validate: function(artifactID){ 
+          if(artifactID !== ''){ return true; }else{ return 'Please supply your Java artifact ID'; } 
+        } 
+      }, { 
+        type: 'input', 
+        name: 'configNamespace', 
+        message: 'What is your Java namespace?', 
+        default: 'org.openhim.mediator' ,
+        validate: function(namespace){ 
+          if(namespace !== ''){ return true; }else{ return 'Please supply your Java namespace'; } 
+        } 
+      }, { 
         type: 'input', 
         name: 'configPort', 
         message: 'Under what port number should the mediator run?', 
@@ -87,6 +110,10 @@ var mediatorJsGenerator = yeoman.generators.Base.extend({
       }];
 
     this.prompt(prompts, function (props) {
+      this.configGroupID = props.configGroupID;
+      this.configArtifactID = props.configArtifactID;
+      this.configNamespace = props.configNamespace;
+
       this.configPort = props.configPort;
       this.configApiUsername = props.configApiUsername;
       this.configApiPassword = props.configApiPassword;
@@ -103,17 +130,35 @@ var mediatorJsGenerator = yeoman.generators.Base.extend({
   },
     
   scaffoldFolders: function(){
-    this.mkdir("app/config");
-    this.mkdir("build");
+
+    var folders = this.configNamespace.split(".");
+    var folderStructure = '';
+    for ( var i=0; i<folders.length; i++ ){
+      console.log( folders[i] )
+      folderStructure += folders[i]+'/';
+    }
+
+    this.mkdir("src/main/java");
+    this.mkdir("src/main/resources");
+
+    // dynamic folder structure
+    this.folderStructure = "src/main/java/"+folderStructure;
+    this.mkdir( this.folderStructure );
+
   },
 
   copyMainFiles: function(){
 
     var context = { 
+      configGroupID: this.configGroupID,
+      configArtifactID: this.configArtifactID,
+      configNamespace: this.configNamespace,
+
       configPort: this.configPort,
       configApiUsername: this.configApiUsername,
       configApiPassword: this.configApiPassword,
       configApiUrl: this.configApiUrl,
+
       mediatorUUID: "urn:uuid:"+uuid.v1(),
       appName: this.mediatorName.replace(/ /g,"-"),
       mediatorName: this.mediatorName,
@@ -123,12 +168,13 @@ var mediatorJsGenerator = yeoman.generators.Base.extend({
       mediatorRoutePort: this.mediatorRoutePort
     };
 
-    this.template("_gruntfile.js", "Gruntfile.js", context);
-    this.template("_package.json", "package.json", context);
-    this.template("_config.json", "app/config/config.json", context);
-    this.template("_mediator.json", "app/config/mediator.json", context);
+    // copy the templates and override placeholders
+    this.template("_pom.xml", "pom.xml", context);
+    this.template("_mediator.properties", "src/main/resources/mediator.properties", context);
+    this.template("_mediator-registration-info.json", "src/main/resources/mediator-registration-info.json", context);
+    this.template("_DefaultOrchestrator.java", this.folderStructure+"DefaultOrchestrator.java", context);
+    this.template("_MediatorMain.java", this.folderStructure+"MediatorMain.java", context);
 
-    this.copy("_index.js", "app/index.js");
   },
 
   install: function () {
@@ -147,4 +193,4 @@ var mediatorJsGenerator = yeoman.generators.Base.extend({
   }
 });
 
-module.exports = mediatorJsGenerator;
+module.exports = mediatorJavaGenerator;

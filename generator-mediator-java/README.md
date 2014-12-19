@@ -1,4 +1,4 @@
-# generator-mediator-js [![Build Status](https://secure.travis-ci.org/BMartinos/generator-mediator-js.png?branch=master)](https://travis-ci.org/BMartinos/generator-mediator-js)
+# generator-mediator-java [![Build Status](https://secure.travis-ci.org/BMartinos/generator-mediator-java.png?branch=master)](https://travis-ci.org/BMartinos/generator-mediator-java)
 
 > [Yeoman](http://yeoman.io) generator
 
@@ -23,16 +23,16 @@ npm install -g yo
 
 Yeoman travels light. He didn't pack any generators when he moved in. You can think of a generator like a plug-in. You get to choose what type of application you wish to create, such as a Backbone application or even a Chrome extension.
 
-To install generator-mediator-js from npm, run:
+To install generator-mediator-java from npm, run:
 
 ```bash
-npm install -g generator-mediator-js
+npm install -g generator-mediator-java
 ```
 
 Finally, initiate the generator:
 
 ```bash
-yo mediator-js
+yo mediator-java
 ```
 
 ### Getting To Know Yeoman

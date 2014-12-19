@@ -1,0 +1,33 @@
+{
+  "urn": "<%= mediatorUUID %>",
+  "version": "0.1.0",
+  "name": "<%= mediatorName %>",
+  "description": "<%= mediatorDesc %>",
+  "endpoints": [
+    {
+      "name": "<%= mediatorName %> Route",
+      "host": "localhost",
+      "port": "<%= mediatorRoutePort %>",
+      "path": "<%= mediatorRoutePath %>",
+      "type": "http"
+    }
+  ],
+  "defaultChannelConfig": [
+    {
+      "name": "<%= mediatorName %>",
+      "urlPattern": "<%= mediatorUrlPattern %>",
+      "type": "http",
+      "allow": ["admin"],
+      "routes": [
+        {
+          "name": "<%= mediatorName %> Route",
+          "host": "localhost",
+          "port": "<%= mediatorRoutePort %>",
+          "path": "<%= mediatorRoutePath %>",
+          "type": "http",
+          "primary": "true"
+        }
+      ]
+    }
+  ]
+}

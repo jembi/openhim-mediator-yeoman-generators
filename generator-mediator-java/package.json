@@ -1,7 +1,7 @@
 {
-  "name": "generator-mediator-js",
-  "version": "0.0.0",
-  "description": "Yeoman generator",
+  "name": "generator-mediator-java",
+  "version": "0.1.0",
+  "description": "Yeoman generator Java",
   "license": "MIT",
   "main": "app/index.js",
   "author": { "name": "Martin Brocker" },

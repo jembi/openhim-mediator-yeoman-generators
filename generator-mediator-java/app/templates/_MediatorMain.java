@@ -1,4 +1,4 @@
-package org.openhim.mediator;
+package <%= configNamespace %>;
 
 import akka.actor.ActorSystem;
 import akka.event.Logging;
