@@ -8,26 +8,6 @@ module.exports = function(grunt) {
 
     pkg: grunt.file.readJSON('package.json'),
 
-    //task config
-    /*connect: {
-      server: {
-        options: {
-          port: '<%= configPort %>',
-          base: 'build',
-          // Change this to '0.0.0.0' to access the server from outside.
-          hostname: '0.0.0.0',
-          livereload: 35729,
-          keepalive: true,
-          open: true
-        }
-      }
-    },
-    concat: {
-      dist: {
-        src: ["app/index.js"],
-        dest: "build/index.js"
-      }
-    },*/
     express: {
       custom: {
         options: {

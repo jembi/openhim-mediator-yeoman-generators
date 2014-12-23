@@ -6,7 +6,7 @@
   "defaultChannelConfig": [
     {
       "name": "<%= mediatorName %>",
-      "urlPattern": "<%= mediatorUrlPattern %>",
+      "urlPattern": "/sample-pattern",
       "alerts": [],
       "txRerunAcl": [],
       "txViewFullAcl": [],
@@ -18,7 +18,7 @@
           "name": "<%= mediatorName %> Route",
           "host": "localhost",
           "path": "<%= mediatorRoutePath %>",
-          "port": "<%= mediatorRoutePort %>",
+          "port": "<%= configPort %>",
           "primary": true,
           "type": "http"
         }
@@ -32,7 +32,7 @@
       "name": "<%= mediatorName %> Route",
       "host": "localhost",
       "path": "<%= mediatorRoutePath %>",
-      "port": "<%= mediatorRoutePort %>",
+      "port": "<%= configPort %>",
       "primary": true,
       "type": "http"
     }
