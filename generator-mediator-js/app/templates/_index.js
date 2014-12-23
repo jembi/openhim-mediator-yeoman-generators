@@ -6,7 +6,6 @@ var crypto = require('crypto');
 
 // get config objects
 var config = require("./config/config");
-var portConfig = config.port;
 var apiConfig = config.api;
 var dbConfig = config.database;
 
