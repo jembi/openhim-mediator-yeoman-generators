@@ -15,7 +15,7 @@ public class MediatorMain {
 
         //TODO Configure routes here
         //...
-        routingTable.addRoute("/mediator", DefaultOrchestrator.class);
+        routingTable.addRoute("<%= mediatorRoutePath %>", DefaultOrchestrator.class);
 
         return routingTable;
     }

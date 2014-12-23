@@ -1,8 +1,8 @@
 {
   "name": "generator-mediator-js",
-  "version": "0.0.0",
-  "description": "Yeoman generator",
-  "license": "MIT",
+  "version": "0.1.0",
+  "description": "OpenHIM Mediator generator for Node.js",
+  "license": "MPL-2.0",
   "main": "app/index.js",
   "author": { "name": "Martin Brocker" },
   "engines": {
