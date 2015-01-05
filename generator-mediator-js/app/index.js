@@ -38,11 +38,7 @@ var mediatorJsGenerator = yeoman.generators.Base.extend({
       }, { 
         type: 'input', 
         name: 'mediatorRoutePath', 
-        message: 'What is your primary route path?', 
-        default: '/mediator',
-        validate: function(mediatorRoutePath){ 
-          if(mediatorRoutePath !== ''){ return true; }else{ return 'Please supply a primary route path'; } 
-        } 
+        message: 'What is your primary route path?'
       }];
 
     this.prompt(prompts, function (props) {
