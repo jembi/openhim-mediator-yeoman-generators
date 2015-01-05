@@ -1,4 +1,4 @@
-# generator-mediator-js [![Build Status](https://secure.travis-ci.org/BMartinos/generator-mediator-js.png?branch=master)](https://travis-ci.org/BMartinos/generator-mediator-js)
+# generator-mediator-js
 
 > [Yeoman](http://yeoman.io) generator
 
@@ -44,4 +44,4 @@ If you'd like to get to know Yeoman better and meet some of his friends, [Grunt]
 
 ## License
 
-MPL 2.0
+MIT
