@@ -6,7 +6,8 @@
   "main": "app/index.js",
   "author": "Jembi Health Systems (https://github.com/jembi)",
   "contributors": [
-    "Martin Brocker <martin@jembi.org> (https://github.com/BMartinos)"
+    "Martin Brocker <martin@jembi.org> (https://github.com/BMartinos)",
+    "Hannes Venter <hannes@jembi.org> (https://github.com/devcritter)"
   ],
   "repository": "jembi/openhim-mediator-yeoman-generators",
   "engines": {
