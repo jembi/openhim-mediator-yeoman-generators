@@ -6,6 +6,7 @@ var crypto = require('crypto');
 
 // get config objects
 var config = require("./config/config");
+var configMediator = require("./config/mediator");
 var apiConfig = config.api;
 var dbConfig = config.database;
 
