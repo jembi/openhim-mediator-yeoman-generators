@@ -10,9 +10,7 @@ var mediatorConfig = require("./config/mediator");
 
 // include register script
 var register = require("./register");
-register.registerMediator(needle, apiConfig, mediatorConfig)
-
-
+register.registerMediator( apiConfig, mediatorConfig)
 
 
 /* ######################### */
