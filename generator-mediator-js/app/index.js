@@ -73,6 +73,7 @@ var mediatorJsGenerator = yeoman.generators.Base.extend({
 
     this.copy("_config.json", "app/config/config.json");
     this.copy("_index.js", "app/index.js");
+    this.copy("_register.js", "app/register.js");
   },
 
   install: function () {
