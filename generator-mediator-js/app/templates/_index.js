@@ -1,7 +1,6 @@
 // load modules
 var express = require('express')
 var app = express()
-var needle = require('needle');
 
 // get config objects
 var config = require("./config/config");
