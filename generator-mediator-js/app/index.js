@@ -78,10 +78,7 @@ var mediatorJsGenerator = yeoman.generators.Base.extend({
 
   install: function () {
     this.installDependencies({
-      bower: false,
-      npm: true,
-      skipInstall: true,
-      skipMessage: true,
+      skipInstall: this.options['skip-install'],
       callback: function () {
         // Have Yeoman greet the user.
         console.log(yosay(
