@@ -1,6 +1,6 @@
 {
   "name": "generator-mediator-js",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "OpenHIM Mediator generator for Node.js",
   "license": "MPL-2.0",
   "main": "app/index.js",
@@ -8,7 +8,10 @@
   "contributors": [
     "Martin Brocker <martin@jembi.org> (https://github.com/BMartinos)"
   ],
-  "repository": "jembi/openhim-mediator-yeoman-generators",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jembi/openhim-mediator-yeoman-generators.git"
+  },
   "engines": {
     "node": ">=0.10.0"
   },
@@ -24,10 +27,6 @@
     "OpenHIE",
     "Interoperability"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/jembi/openhim-mediator-yeoman-generators.git"
-  },
   "dependencies": {
     "yeoman-generator": "^0.18.0",
     "chalk": "^0.5.0",
