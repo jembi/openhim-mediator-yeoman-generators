@@ -49,7 +49,7 @@ public class DefaultOrchestratorTest {
                     "http",
                     null,
                     null,
-                    "<%= mediatorRoutePath =>",
+                    "<%= mediatorRoutePath %>",
                     "test message",
                     Collections.<String, String>singletonMap("Content-Type", "text/plain"),
                     Collections.<String, String>emptyMap()

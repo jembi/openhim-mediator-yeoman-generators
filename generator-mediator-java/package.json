@@ -1,6 +1,6 @@
 {
   "name": "generator-mediator-java",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "OpenHIM Mediator generator for Java",
   "license": "MPL-2.0",
   "main": "app/index.js",
