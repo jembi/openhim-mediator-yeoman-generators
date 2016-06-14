@@ -5,6 +5,7 @@ import akka.actor.ActorSystem;
 import akka.actor.Props;
 import akka.testkit.JavaTestKit;
 import java.util.Collections;
+import org.apache.commons.lang3.tuple.Pair;
 import org.junit.*;
 import org.openhim.mediator.engine.MediatorConfig;
 import org.openhim.mediator.engine.messages.FinishRequest;
@@ -52,7 +53,7 @@ public class DefaultOrchestratorTest {
                     "<%= mediatorRoutePath %>",
                     "test message",
                     Collections.<String, String>singletonMap("Content-Type", "text/plain"),
-                    Collections.<String, String>emptyMap()
+                    Collections.<Pair<String, String>>emptyList()
             );
 
             defaultOrchestrator.tell(POST_Request, getRef());

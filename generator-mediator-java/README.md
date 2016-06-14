@@ -1,47 +1,38 @@
+[![OpenHIM Core](https://img.shields.io/badge/openhim--core-1.4%2B-brightgreen.svg)](http://openhim.readthedocs.org/en/latest/user-guide/versioning.html)
+
 # generator-mediator-java
 
-> [Yeoman](http://yeoman.io) generator
+A [Yeoman](http://yeoman.io) generator for scaffolding a Java-based [OpenHIM](http://openhim.org/) mediator based on the [Java Engine](https://github.com/jembi/openhim-mediator-engine-java).
 
 
 ## Getting Started
 
-### What is Yeoman?
-
-Trick question. It's not a thing. It's this guy:
-
-![](http://i.imgur.com/JHaAlBJ.png)
-
-Basically, he wears a top hat, lives in your computer, and waits for you to tell him what kind of application you wish to create.
-
-Not every new computer comes with a Yeoman pre-installed. He lives in the [npm](https://npmjs.org) package repository. You only have to ask for him once, then he packs up and moves into your hard drive. *Make sure you clean up, he likes new and shiny things.*
-
+It's quick to get up and running. First install yeoman and this generator, and then run the generator:
 ```bash
 npm install -g yo
-```
-
-### Yeoman Generators
-
-Yeoman travels light. He didn't pack any generators when he moved in. You can think of a generator like a plug-in. You get to choose what type of application you wish to create, such as a Backbone application or even a Chrome extension.
-
-To install generator-mediator-java from npm, run:
-
-```bash
 npm install -g generator-mediator-java
-```
-
-Finally, initiate the generator:
-
-```bash
+mkdir my-mediator
+cd my-mediator
 yo mediator-java
 ```
 
-### Getting To Know Yeoman
+The generator will prompt you with several questions for your mediator and will then setup the scaffold. When done, simply run
+```bash
+mvn install
+```
+to build the mediator.
 
-Yeoman has a heart of gold. He's a person with feelings and opinions, but he's very easy to work with. If you think he's too opinionated, he can be easily convinced.
+The mediator is packaged as a stand-alone jar and can be executed as follows:
+```bash
+java -jar mediator-x.y.x-jar-with-dependencies.jar --conf my-mediator.properties
+```
 
-If you'd like to get to know Yeoman better and meet some of his friends, [Grunt](http://gruntjs.com) and [Bower](http://bower.io), check out the complete [Getting Started Guide](https://github.com/yeoman/yeoman/wiki/Getting-Started).
+The .jar can be found in `target/` and a default set of properties in `src/main/resources/mediator.properties`
 
+## Certificate Issues
 
-## License
+If you're using the OpenHIM with a self-signed certificate, [this tutorial](http://openhim.readthedocs.io/en/latest/tutorial/3-creating-a-passthrough-mediator.html#suncertpathbuilderexception-unable-to-find-valid-certification-path-to-requested-target) should help you setup your local JRE to accomodate the HIM's certificate.
 
-MIT
+## Compatibility
+
+Out of the box the scaffolded mediator will be compatible with version 1.4+ of the OpenHIM Core. Note however that it will be fully compatible with 2.0+ as well. If for some reason you require the mediator to be 1.2+ compatible, you can easily allow this by disabling the heartbeats. To do so simply set `mediator.heartbeats` to `false` in `mediator.properties`.
