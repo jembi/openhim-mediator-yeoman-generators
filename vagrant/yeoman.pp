@@ -16,7 +16,7 @@ package { "git": }
 package { "libfontconfig1": }
 
 class { "nodejs":
-  version => "stable",
+  version => "v4.4.3",
   make_install => false,
 }
 

@@ -66,6 +66,10 @@ public class MediatorMain {
         RegistrationConfig regConfig = new RegistrationConfig(regInfo);
         config.setRegistrationConfig(regConfig);
 
+        if (config.getProperty("mediator.heartbeats")!=null && "true".equalsIgnoreCase(config.getProperty("mediator.heartbeats"))) {
+            config.setHeartbeatsEnabled(true);
+        }
+
         return config;
     }
 
