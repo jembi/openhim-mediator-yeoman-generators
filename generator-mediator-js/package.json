@@ -6,7 +6,8 @@
   "main": "app/index.js",
   "author": "Jembi Health Systems (https://github.com/jembi)",
   "contributors": [
-    "Martin Brocker <martin@jembi.org> (https://github.com/BMartinos)"
+    "Martin Brocker <martin@jembi.org> (https://github.com/BMartinos)",
+    "Andrew Napier <andrew.napier@jembi.org> (https://github.com/NapierGit)"
   ],
   "repository": {
     "type": "git",
