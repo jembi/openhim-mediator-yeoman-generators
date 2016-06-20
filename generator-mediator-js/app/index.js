@@ -6,8 +6,11 @@ var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
 var uuid = require('node-uuid');
+var optionOrPrompt = require('yeoman-option-or-prompt');
 
 var mediatorJsGenerator = yeoman.generators.Base.extend({
+  
+  _optionOrPrompt: optionOrPrompt,
   
   prompting: function () {
     var done = this.async();
@@ -41,7 +44,7 @@ var mediatorJsGenerator = yeoman.generators.Base.extend({
         message: 'What is your primary route path?'
       }];
 
-    this.prompt(prompts, function (props) {
+    this._optionOrPrompt(prompts, function (props) {
       this.configPort = props.configPort;
       this.mediatorName = props.mediatorName;
       this.mediatorDesc = props.mediatorDesc;
