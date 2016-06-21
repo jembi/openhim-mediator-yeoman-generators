@@ -20,7 +20,7 @@ var mediatorJsGenerator = yeoman.generators.Base.extend({
       'Welcome to the marvelous ' + chalk.red('MediatorJs') + ' generator!'
     ));
 
-    var prompts = [{ 
+    var prompts = [{
         type: 'input', 
         name: 'mediatorName', 
         message: 'What is your Mediator\'s name?', 
@@ -41,25 +41,46 @@ var mediatorJsGenerator = yeoman.generators.Base.extend({
       }, { 
         type: 'input', 
         name: 'mediatorRoutePath', 
-        message: 'What is your primary route path?'
+        message: 'What is your primary route path?',
+        default: 'primary/path/'
+      }, { 
+        name: 'enablePPA',
+        type: 'confirm',
+        message: 'Would you like to package your app?',
+        default: false
+      }, {
+        when: function (response) {
+          return response.enablePPA;
+        },
+        name: 'good-or-not',
+        message: 'Sweet! Was it any good?'
       }];
 
     this._optionOrPrompt(prompts, function (props) {
+      // Mediator settings
       this.configPort = props.configPort;
       this.mediatorName = props.mediatorName;
       this.mediatorDesc = props.mediatorDesc;
       this.mediatorRoutePath = props.mediatorRoutePath;
-
+      
+      // PPA settings
+      this.enablePPA = props.enablePPA;
+      
       done();
     }.bind(this));
   },
     
-  scaffoldFolders: function(){
-    this.mkdir("app/config");
-    this.mkdir("build");
+  scaffoldFolders: function() {
+    this.mkdir("config/");
+    this.mkdir("lib/");
+    this.mkdir("test/");
+    
+    if(this.enablePPA) {
+      this.mkdir("packaging/")
+    }
   },
 
-  copyMainFiles: function(){
+  copyMainFiles: function() {
 
     var context = { 
       configPort: this.configPort,
@@ -72,21 +93,23 @@ var mediatorJsGenerator = yeoman.generators.Base.extend({
 
     this.template("_gruntfile.js", "Gruntfile.js", context);
     this.template("_package.json", "package.json", context);
-    this.template("_mediator.json", "app/config/mediator.json", context);
+    this.template("_mediator.json", "config/mediator.json", context);
 
-    this.copy("_config.json", "app/config/config.json");
-    this.copy("_index.js", "app/index.js");
-    this.copy("_register.js", "app/register.js");
+    this.copy("_config.json", "config/config.json");
+    this.copy("_index.js", "lib/index.js");
+    this.copy("_register.js", "lib/register.js");
   },
 
   install: function () {
     this.installDependencies({
+      npm:true,
+      bower:false,
       skipInstall: this.options['skip-install'],
       callback: function () {
-        // Have Yeoman greet the user.
+        // On successful install, have Yeoman greet the user.
         console.log(yosay(
           'Scaffolding Complete!\r' + 
-          chalk.green('Remember "npm install"\r') + 
+          chalk.green('Remember: "npm start"\r') + 
           'Goodbye!'
         ));
       }
