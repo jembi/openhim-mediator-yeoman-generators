@@ -1,15 +1,14 @@
-Source: openhim-mediator-mhero
-Maintainer: Martin Brocker <martin@jembi.org>
+Source: <%= appName %>
+Maintainer: <%= mediatorMaintainer %>
 Section: web
 Priority: optional
 Standards-Version: 3.9.1
 Build-Depends: debhelper (>= 7)
-Homepage: https://github.com/jembi/openhim-mediator-mhero
+Homepage: https://github.com/jembi/<%= appName %>
 
 
-Package: openhim-mediator-mhero
+Package: <%= appName %>
 Architecture: amd64
 Depends: openhim-core-js
 Recommends:
-Description: OpenHIM mediator for mHero
- An mHero mediator for data synchronisation.
+Description: <%= mediatorDesc %>

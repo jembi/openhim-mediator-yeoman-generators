@@ -4,7 +4,7 @@ set -e
 # make sure OpenHIM service is started
 sleep 10
 
-cd /usr/share/openhim-mediator-mhero
+cd /usr/share/<%= appName %>
 
 # fetch server details
 . /usr/share/debconf/confmodule
@@ -28,7 +28,7 @@ sudo sed -i -r 's/"apiURL": ".*"/"apiURL": "'$PROTOCOL':\/\/'$HOST:$PORT'"/' con
 
 sudo -u openhim /bin/bash /etc/openhim/install_node_4.sh
 
-chown -R openhim:openhim /usr/share/openhim-mediator-mhero
+chown -R openhim:openhim /usr/share/<%= appName %>
 
-stop openhim-mediator-mhero || true
-start openhim-mediator-mhero || true
+stop <%= appName %> || true
+start <%= appName %> || true

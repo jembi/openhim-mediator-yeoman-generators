@@ -1,21 +1,39 @@
 {
-  "name": "'<%= appName %>'",
+  "name": "<%= appName %>",
   "version": "0.0.1",
-  "description": "'<%= mediatorDesc %>'",
+  "description": "<%= mediatorDesc %>",
   "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node lib/index.js"
+    "start": "node lib/index.js",
+    "test": "npm -s run test:code && npm -s run test:style",
+    "test:code": "tap --cov --reporter=spec test/unit.js test/integration.js test/openhim.js",
+    "test:style": "standard -v | snazzy",
+    "cov": "npm run test:code -- --coverage-report=lcov",
+    "test:watch": "onchange '**/*.js' -- npm test"
   },
-  "license": "ISC",
-  "dependencies": { 
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jembi/<%= appName %>.git"
+  },
+  "keywords": [
+    "openhim",
+    "mediator"
+  ],
+  "author": "<%= mediatorAuthor %>",
+  "license": "MPL-2.0",
+  "contributors": ["<%= mediatorMaintainer %>"],
+  "bugs": {
+    "url": "https://github.com/jembi/<%= appName %>/issues"
+  },
+  "homepage": "https://github.com/jembi/<%= appName %>#readme",
+  "dependencies": {
     "express": "^4.13.4",
     "openhim-mediator-utils": "^0.2.2",
     "request": "^2.71.0",
     "urijs": "^1.17.1",
     "xmldom": "^0.1.22",
     "xpath": "0.0.23"
-   },
+  },
   "devDependencies": {
     "onchange": "^2.3.0",
     "rewire": "^2.5.1",
