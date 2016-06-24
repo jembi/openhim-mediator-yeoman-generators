@@ -20,8 +20,8 @@ echo "Targets: $TARGETS"
 cd $HOME
 echo $HOME
 
-PKG=openhim-mediator-mhero
-PKGVER=0.5.0
+PKG=<%= appName %>
+PKGVER=0.0.1
 
 echo -n "Would you like to upload the build(s) to Launchpad? [y/N] "
 read UPLOAD
