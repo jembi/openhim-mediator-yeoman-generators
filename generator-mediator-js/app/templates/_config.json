@@ -1,7 +1,9 @@
 {
   "api": {
-    "username": "root@openhim.org",
-    "password": "openhim-password",
-    "apiURL": "https://localhost:8080"
-  }
+    "username": "<%= mediatorApiUsername %>",
+    "password": "<%= mediatorApiPassword %>",
+    "apiURL": "<%= mediatorApiUrl %>",
+    "trustSelfSigned": "<%= mediatorApiSsl %>"
+  },
+  "register": "<%= mediatorRegister %>"
 }
