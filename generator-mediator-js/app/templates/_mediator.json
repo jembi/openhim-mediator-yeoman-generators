@@ -1,12 +1,12 @@
 {
   "urn": "<%= mediatorUUID %>",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "name": "<%= mediatorName %>",
   "description": "<%= mediatorDesc %>",
   "defaultChannelConfig": [
     {
       "name": "<%= mediatorName %>",
-      "urlPattern": "/sample-pattern",
+      "urlPattern": "<%= defaultChannelPath %>",
       "alerts": [],
       "txRerunAcl": [],
       "txViewFullAcl": [],
@@ -16,7 +16,7 @@
       "routes": [
         {
           "name": "<%= mediatorName %> Route",
-          "host": "localhost",
+          "host": "<%= mediatorRouteHost %>",
           "path": "<%= mediatorRoutePath %>",
           "port": "<%= configPort %>",
           "primary": true,
@@ -30,11 +30,38 @@
   "endpoints": [
     {
       "name": "<%= mediatorName %> Route",
-      "host": "localhost",
+      "host": "<%= mediatorRouteHost %>",
       "path": "<%= mediatorRoutePath %>",
       "port": "<%= configPort %>",
       "primary": true,
       "type": "http"
     }
-  ]
+  ],
+  "configDefs": [
+    {
+      "param": "sampleApplication",
+      "displayName": "sampleApplication Server",
+      "description": "The sampleApplication server with purpose sample",
+      "type": "struct",
+      "template": [
+        {
+          "param": "url",
+          "displayName": "URL",
+          "description": "The base URL (e.g. https://sampleApplication.io)",
+          "type": "string"
+        }, {
+          "param": "routePath",
+          "displayName": "routePath",
+          "description": "The mediator channel route path",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "config": {
+    "sampleApplication": {
+      "url": "http://localhost:7001",
+      "path": "/routePath"
+    }
+  }
 }
