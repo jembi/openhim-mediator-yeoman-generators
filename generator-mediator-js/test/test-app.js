@@ -1,27 +1,29 @@
-'use strict';
+'use strict'
 
-var path = require('path');
-var assert = require('yeoman-generator').assert;
-var helpers = require('yeoman-generator').test;
-var os = require('os');
+var path = require('path')
+var assert = require('yeoman-assert')
+var helpers = require('yeoman-test')
+var os = require('os')
 
 describe('mediator-js:app', function () {
   before(function (done) {
     helpers.run(path.join(__dirname, '../app'))
       .inDir(path.join(os.tmpdir(), './temp-test'))
-      .withOptions({ 'skip-install': true })
-      .withPrompt({
-        someOption: true
+      .withOptions({ 'someOption': true })
+      .withPrompts({
+        somePrompt: true
       })
-      .on('end', done);
-  });
+      .on('end', done)
+  })
 
   it('creates files', function () {
     assert.file([
-      'bower.json',
       'package.json',
-      '.editorconfig',
-      '.jshintrc'
-    ]);
-  });
-});
+      'lib/index.js',
+      'lib/openhim.js',
+      'lib/utils.js',
+      'config/config.json',
+      'config/mediator.json'
+    ])
+  })
+})
