@@ -2,9 +2,10 @@
 
 var config = require('./config')
 
-exports.promptsList = () => {
+exports.promptsList = (enablePrompts) => {
   var list = [
     {
+      when: function() { return enablePrompts },
       type: 'confirm',
       name: 'enablePrompts',
       message: 'Would you like to be prompted for config?',

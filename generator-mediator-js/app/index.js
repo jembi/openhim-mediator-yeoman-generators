@@ -17,7 +17,7 @@ var mediatorJsGenerator = generator.Base.extend({
   },
   
   prompting: function () {
-    return this.prompt(prompts.promptsList()).then(function (props) {
+    return this.prompt(prompts.promptsList(this.enablePrompts)).then(function (props) {
       // Mediator settings
       this.mediatorName = props.mediatorName || config.mediatorName
       this.mediatorDesc = props.mediatorDesc || config.mediatorDesc
