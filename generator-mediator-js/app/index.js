@@ -80,6 +80,8 @@ var mediatorJsGenerator = generator.Base.extend({
     this.fs.copyTpl(this.templatePath('mediatorTemplate/lib/_index.js'), this.destinationPath('lib/index.js'))
     this.fs.copyTpl(this.templatePath('mediatorTemplate/lib/_openhim.js'), this.destinationPath('lib/openhim.js'))
     this.fs.copyTpl(this.templatePath('mediatorTemplate/lib/_utils.js'), this.destinationPath('lib/utils.js'))
+    this.fs.copyTpl(this.templatePath('mediatorTemplate/test/_openhim.js'), this.destinationPath('test/openhim.js'))
+    this.fs.copyTpl(this.templatePath('mediatorTemplate/test/_test-openhim-server.js'), this.destinationPath('test/test-openhim-server.js'))
     
     // Add the PPA files
     this.fs.copyTpl(this.templatePath('packagingTemplate/_.dput.cf'), this.destinationPath('packaging/.dput.cf'), ppaContext)

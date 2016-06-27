@@ -29,10 +29,10 @@ exports.buildReturnObject = (urn, status, statusCode, headers, responseBody, orc
     timestamp: new Date().getTime()
   }
   return {
-    "x-mediator-urn": urn,
-    "status": status,
-    "response": response,
-    "orchestrations": orchestrations,
-    "properties": properties
+    'x-mediator-urn': urn,
+    status: status,
+    response: response,
+    orchestrations: orchestrations,
+    properties: properties
   }
 }
