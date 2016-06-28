@@ -31,8 +31,8 @@ var mediatorJsGenerator = generator.Base.extend({
       this.mediatorMaintainer = props.mediatorMaintainer || config.mediatorMaintainer
       this.configPort = props.configPort || config.configPort
       this.defaultChannelPath = props.defaultChannelPath || config.defaultChannelPath
-      this.mediatorRoutePath = props.mediatorRoutePath || config.mediatorRoutePath
-      this.mediatorRouteHost = props.mediatorRouteHost || config.mediatorRouteHost
+      this.mediatorPath = props.mediatorPath || config.mediatorPath
+      this.mediatorHost = props.mediatorHost || config.mediatorHost
       
       // API settings
       this.configureApi = props.configureApi || config.configureApi
@@ -59,8 +59,8 @@ var mediatorJsGenerator = generator.Base.extend({
       mediatorAuthor: this.mediatorAuthor,
       mediatorMaintainer: this.mediatorMaintainer,
       defaultChannelPath: this.defaultChannelPath,
-      mediatorRouteHost: this.mediatorRouteHost,
-      mediatorRoutePath: this.mediatorRoutePath
+      mediatorHost: this.mediatorHost,
+      mediatorPath: this.mediatorPath
     }
     
     var apiContext = {

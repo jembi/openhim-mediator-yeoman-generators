@@ -11,21 +11,13 @@
     "cov": "npm run test:code -- --coverage-report=lcov",
     "test:watch": "onchange '**/*.js' -- npm test"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jembi/<%= appName %>.git"
-  },
   "keywords": [
     "openhim",
     "mediator"
   ],
   "author": "<%= mediatorAuthor %>",
   "license": "MPL-2.0",
-  "contributors": ["<%= mediatorMaintainer %>"],
-  "bugs": {
-    "url": "https://github.com/jembi/<%= appName %>/issues"
-  },
-  "homepage": "https://github.com/jembi/<%= appName %>#readme",
+  "contributors": ["<%= mediatorMaintainer%>"],
   "dependencies": {
     "express": "^4.13.4",
     "openhim-mediator-utils": "^0.2.2",

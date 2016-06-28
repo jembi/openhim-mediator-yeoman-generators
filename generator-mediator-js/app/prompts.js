@@ -8,13 +8,13 @@ exports.promptsList = (enablePrompts, nameProvided, descriptionProvided) => {
       when: !nameProvided,
       type: 'input', 
       name: 'mediatorName',
-      message: 'What is your Mediator\'s name?',
+      message: 'What is your mediator\'s name?',
       validate: function(mediatorName) { return mediatorName==='' ? false : true }
     }, {
       when: !descriptionProvided,
       type: 'input', 
       name: 'mediatorDesc', 
-      message: 'Describe what your Mediator does:',
+      message: 'Describe what your mediator does:',
       validate: function(mediatorDesc) { return mediatorDesc==='' ? false : true }
     }, {
       when: enablePrompts,
@@ -25,33 +25,41 @@ exports.promptsList = (enablePrompts, nameProvided, descriptionProvided) => {
     }, {
       when: enablePrompts,
       type: 'input', 
-      name: 'mediatorMaintainer', 
-      message: 'Who is the maintainer of the mediator?',
-      default: config.mediatorMaintainer
+      name: 'configPort', 
+      message: 'What port number would you like the mediator to run on?', 
+      default: config.configPort 
     }, {
       when: enablePrompts,
+      type: 'confirm',
+      name: 'localMediator',
+      message: 'Will this mediator be run alongside the OpenHIM?', 
+      default: true 
+    }, {
+      when: function (response) { return !response.localMediator },
       type: 'input', 
-      name: 'configPort', 
-      message: 'Under what port number should the mediator run?', 
-      default: config.configPort 
+      name: 'mediatorHost', 
+      message: 'What is your mediator\'s ip address?',
+      default: 'xx.xx.xx.xx',
+      validate: function(mediatorHost) { return mediatorHost==='xx.xx.xx.xx' ? false : true }
+    }, {
+      when: function (response) { return !response.localMediator },
+      type: 'input',
+      name: 'mediatorApiUrl',
+      message: 'Enter the URL for the OpenHIM API:',
+      default: 'https://xx.xx.xx.xx:8080',
+      validate: function(mediatorApiUrl) { return mediatorApiUrl==='https://xx.xx.xx.xx:8080' ? false : true }
     }, {
       when: enablePrompts,
       type: 'input', 
       name: 'defaultChannelPath', 
-      message: 'What is your default channel path?',
+      message: 'What path should the mediator\'s default channel on the OpenHIM listen on?',
       default: config.defaultChannelPath
     }, {
       when: enablePrompts,
       type: 'input', 
-      name: 'mediatorRouteHost', 
-      message: 'What is your mediator ip address?',
-      default: config.mediatorRouteHost
-    }, {
-      when: enablePrompts,
-      type: 'input', 
-      name: 'mediatorRoutePath', 
-      message: 'What is your primary route path?',
-      default: config.mediatorRoutePath
+      name: 'mediatorPath', 
+      message: 'What path should the mediator\'s default channel on the OpenHIM route requests to on the mediator?',
+      default: config.mediatorPath
     }, {
       when: enablePrompts,
       name: 'configureApi',
@@ -71,10 +79,10 @@ exports.promptsList = (enablePrompts, nameProvided, descriptionProvided) => {
       message: 'Enter your password for the API:',
       default: config.mediatorApiPassword
     }, {
-      when: function (response) { return response.configureApi },
+      when: function (response) { return response.configureApi && response.localMediator },
       type: 'input',
       name: 'mediatorApiUrl',
-      message: 'Enter the URL for the API:',
+      message: 'Enter the URL for the OpenHIM API:',
       default: config.mediatorApiUrl
     }, {
       when: function (response) { return response.configureApi },

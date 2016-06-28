@@ -2,9 +2,9 @@
   "mediatorAuthor":"Jembi Health Systems NPC",
   "mediatorMaintainer":"Name Surname <email@exchange.com> (https://github.com/githubusername)",
   "configPort":7000,
+  "mediatorHost":"localhost",
   "defaultChannelPath":"channelPath",
-  "mediatorRouteHost":"localhost",
-  "mediatorRoutePath":"routePath",
+  "mediatorPath":"routePath",
 
   "configureApi": false,
   "mediatorApiUsername":"root@openhim.org",
