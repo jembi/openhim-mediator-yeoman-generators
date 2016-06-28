@@ -50,7 +50,7 @@
           "description": "The base URL (e.g. https://sampleApplication.io)",
           "type": "string"
         }, {
-          "param": "routePath",
+          "param": "path",
           "displayName": "routePath",
           "description": "The mediator channel route path",
           "type": "string"
