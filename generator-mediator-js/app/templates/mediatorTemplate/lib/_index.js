@@ -27,6 +27,8 @@ function setupApp () {
     var responseBody = 'Primary Route Reached'
     var headers = { 'content-type': 'application/json' }
 
+    // add logic to alter the request here
+    
     // capture orchestration data
     var orchestrationResponse = { statusCode: 200, headers: headers }
     let orchestrations = []
@@ -77,17 +79,9 @@ function start (callback) {
               console.log(JSON.stringify(newConfig))
               // set new config for mediator
               config = newConfig
-              // example of the fun things we can do:
-              // edit default channel with new config
-              const openhim = OpenHIM(apiConf.api)
-              openhim.fetchChannelByName(mediatorConfig.defaultChannelConfig[0].name, (err, channel) => {
-                if (err) { return console.log('Error: Unable to update default channel - ', err) }
-                channel.routes[0].path = `${config.sampleApplication.path}`
-                openhim.updateChannel(channel._id, channel, (err) => {
-                  if (err) { return console.log('Error: Unable to update default channel - ', err) }
-                  console.log('Updated default channel')
-                })
-              })
+              
+              // we can act on the new config received from the OpenHIM here
+              
             })
             callback(server)
           })
