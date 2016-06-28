@@ -33,6 +33,7 @@ var mediatorJsGenerator = generator.Base.extend({
       this.defaultChannelPath = props.defaultChannelPath || config.defaultChannelPath
       this.mediatorPath = props.mediatorPath || config.mediatorPath
       this.mediatorHost = props.mediatorHost || config.mediatorHost
+      this.appName = this.mediatorName.replace(/ /g,"-")
       
       // API settings
       this.configureApi = props.configureApi || config.configureApi
@@ -53,7 +54,7 @@ var mediatorJsGenerator = generator.Base.extend({
     var mediatorContext = { 
       configPort: this.configPort,
       mediatorUUID: "urn:uuid:" + uuid.v1(),
-      appName: this.mediatorName.replace(/ /g,"-"),
+      appName: this.appName,
       mediatorName: this.mediatorName,
       mediatorDesc: this.mediatorDesc,
       mediatorAuthor: this.mediatorAuthor,
@@ -74,7 +75,7 @@ var mediatorJsGenerator = generator.Base.extend({
     var ppaContext = {
       ppaUsername: this.ppaUsername,
       mediatorName: this.mediatorName,
-      appName: this.mediatorName.replace(/ /g,"-"),
+      appName: this.appName,
       mediatorMaintainer: this.mediatorMaintainer,
       mediatorDesc: this.mediatorDesc
     }
