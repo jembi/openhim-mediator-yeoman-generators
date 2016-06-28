@@ -76,6 +76,7 @@ var mediatorJsGenerator = generator.Base.extend({
     // Add the mediator files
     this.fs.copyTpl(this.templatePath('mediatorTemplate/_package.json'), this.destinationPath('package.json'), mediatorContext)
     this.fs.copyTpl(this.templatePath('mediatorTemplate/_.gitignore'), this.destinationPath('.gitignore'))
+    this.fs.copyTpl(this.templatePath('mediatorTemplate/_README.md'), this.destinationPath('README.md'), mediatorContext)
     this.fs.copyTpl(this.templatePath('mediatorTemplate/config/_mediator.json'), this.destinationPath('config/mediator.json'), mediatorContext)
     this.fs.copyTpl(this.templatePath('mediatorTemplate/config/_config.json'), this.destinationPath('config/config.json'), apiContext)
     this.fs.copyTpl(this.templatePath('mediatorTemplate/lib/_index.js'), this.destinationPath('lib/index.js'))
