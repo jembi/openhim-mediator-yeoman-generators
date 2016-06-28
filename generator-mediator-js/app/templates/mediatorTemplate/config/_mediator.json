@@ -39,29 +39,14 @@
   ],
   "configDefs": [
     {
-      "param": "sampleApplication",
-      "displayName": "sampleApplication Server",
-      "description": "The sampleApplication server with purpose sample",
-      "type": "struct",
-      "template": [
-        {
-          "param": "url",
-          "displayName": "URL",
-          "description": "The base URL (e.g. https://sampleApplication.io)",
-          "type": "string"
-        }, {
-          "param": "path",
-          "displayName": "routePath",
-          "description": "The mediator channel route path",
-          "type": "string"
-        }
-      ]
+      "param": "upstreamUrl",
+      "displayName": "Upstream URL",
+      "description": "The URL of the service upstream of the mediator",
+      "type": "string",
+      "template": []
     }
   ],
   "config": {
-    "sampleApplication": {
-      "url": "http://localhost:7001",
-      "path": "/routePath"
-    }
+    "upstreamUrl": "http://sampleApplication:7001"
   }
 }
