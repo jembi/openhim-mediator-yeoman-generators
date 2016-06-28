@@ -2,20 +2,20 @@
 
 var config = require('./config')
 
-exports.promptsList = (enablePrompts) => {
+exports.promptsList = (enablePrompts, nameProvided, descriptionProvided) => {
   var list = [
     {
-      when: enablePrompts,
+      when: !nameProvided,
       type: 'input', 
       name: 'mediatorName',
       message: 'What is your Mediator\'s name?',
-      default: config.mediatorName
+      validate: function(mediatorName) { return mediatorName==='' ? false : true }
     }, {
-      when: enablePrompts,
+      when: !descriptionProvided,
       type: 'input', 
       name: 'mediatorDesc', 
-      message: 'What does your Mediator do?',
-      default: config.mediatorDesc
+      message: 'Describe what your Mediator does:',
+      validate: function(mediatorDesc) { return mediatorDesc==='' ? false : true }
     }, {
       when: enablePrompts,
       type: 'input', 

@@ -1,7 +1,4 @@
 {
-  "enablePrompts":true,
-  "mediatorName":"Yeoman Generated Mediator",
-  "mediatorDesc":"Brief Description",
   "mediatorAuthor":"Jembi Health Systems NPC",
   "mediatorMaintainer":"Name Surname <email@exchange.com> (https://github.com/githubusername)",
   "configPort":7000,
@@ -17,5 +14,5 @@
   "mediatorRegister":true,
   
   "enablePPA":false,
-  "ppaUsername":"rg-crichton"
+  "ppaUsername":"openhie"
 }

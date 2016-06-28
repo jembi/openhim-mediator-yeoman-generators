@@ -14,13 +14,19 @@ var mediatorJsGenerator = generator.Base.extend({
 
     this.option('useDefaults')
     this.enablePrompts = (this.options.useDefaults ? false : true)
+    
+    this.option('name')
+    this.nameProvided = (this.options.name ? true : false)
+    
+    this.option('description')
+    this.descriptionProvided = (this.options.description ? true : false)
   },
   
   prompting: function () {
-    return this.prompt(prompts.promptsList(this.enablePrompts)).then(function (props) {
+    return this.prompt(prompts.promptsList(this.enablePrompts, this.nameProvided, this.descriptionProvided)).then(function (props) {
       // Mediator settings
-      this.mediatorName = props.mediatorName || config.mediatorName
-      this.mediatorDesc = props.mediatorDesc || config.mediatorDesc
+      this.mediatorName = this.options.name || props.mediatorName
+      this.mediatorDesc = this.options.description || props.mediatorDesc
       this.mediatorAuthor = props.mediatorAuthor || config.mediatorAuthor
       this.mediatorMaintainer = props.mediatorMaintainer || config.mediatorMaintainer
       this.configPort = props.configPort || config.configPort
