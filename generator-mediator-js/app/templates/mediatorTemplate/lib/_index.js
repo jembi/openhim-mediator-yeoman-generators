@@ -29,8 +29,8 @@ var port = mediatorConfig.endpoints[0].port
 function setupApp () {
   const app = express()
 
-  app.get(mediatorConfig.endpoints[0].path, (req, res) => {
-    console.log('Processing GET request on %s', mediatorConfig.endpoints[0].path)
+  app.all(mediatorConfig.endpoints[0].path, (req, res) => {
+    console.log(`Processing ${req.method} request on ${mediatorConfig.endpoints[0].path}`)
     var responseBody = 'Primary Route Reached'
     var headers = { 'content-type': 'application/json' }
 
