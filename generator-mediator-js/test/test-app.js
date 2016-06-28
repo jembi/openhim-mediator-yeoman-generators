@@ -9,7 +9,7 @@ describe('mediator-js:app', function () {
   before(function (done) {
     helpers.run(path.join(__dirname, '../app'))
       .inDir(path.join(os.tmpdir(), './temp-test'))
-      .withOptions({ 'someOption': true })
+      .withOptions({ 'name': 'my fantastic mediator' })
       .withPrompts({
         somePrompt: true
       })
@@ -20,7 +20,6 @@ describe('mediator-js:app', function () {
     assert.file([
       'package.json',
       'lib/index.js',
-      'lib/openhim.js',
       'lib/utils.js',
       'config/config.json',
       'config/mediator.json'
