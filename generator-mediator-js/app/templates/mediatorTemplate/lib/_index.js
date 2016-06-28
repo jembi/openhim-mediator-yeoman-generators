@@ -5,7 +5,6 @@ const express = require('express')
 const medUtils = require('openhim-mediator-utils')
 
 const utils = require('./utils')
-const OpenHIM = require('./openhim')
 
 // Config
 var config = {} // this will vary depending on whats set in openhim-core

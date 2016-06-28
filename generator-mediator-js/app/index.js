@@ -86,10 +86,7 @@ var mediatorJsGenerator = generator.Base.extend({
     this.fs.copyTpl(this.templatePath('mediatorTemplate/config/_mediator.json'), this.destinationPath('config/mediator.json'), mediatorContext)
     this.fs.copyTpl(this.templatePath('mediatorTemplate/config/_config.json'), this.destinationPath('config/config.json'), apiContext)
     this.fs.copyTpl(this.templatePath('mediatorTemplate/lib/_index.js'), this.destinationPath('lib/index.js'))
-    this.fs.copyTpl(this.templatePath('mediatorTemplate/lib/_openhim.js'), this.destinationPath('lib/openhim.js'))
     this.fs.copyTpl(this.templatePath('mediatorTemplate/lib/_utils.js'), this.destinationPath('lib/utils.js'))
-    this.fs.copyTpl(this.templatePath('mediatorTemplate/test/_openhim.js'), this.destinationPath('test/openhim.js'))
-    this.fs.copyTpl(this.templatePath('mediatorTemplate/test/_test-openhim-server.js'), this.destinationPath('test/test-openhim-server.js'))
     
     // Add the PPA files
     this.fs.copyTpl(this.templatePath('packagingTemplate/_.dput.cf'), this.destinationPath('packaging/.dput.cf'), ppaContext)
@@ -98,7 +95,7 @@ var mediatorJsGenerator = generator.Base.extend({
     this.fs.copyTpl(this.templatePath('packagingTemplate/targets/trusty/debian/_changelog'), this.destinationPath('packaging/targets/trusty/debian/changelog'), ppaContext)
     this.fs.copyTpl(this.templatePath('packagingTemplate/targets/trusty/debian/_control'), this.destinationPath('packaging/targets/trusty/debian/control'), ppaContext)
     this.fs.copyTpl(this.templatePath('packagingTemplate/targets/trusty/debian/_postinst'), this.destinationPath('packaging/targets/trusty/debian/postinst'), ppaContext)
-    this.fs.copyTpl(this.templatePath('packagingTemplate/targets/trusty/etc/init/_mediator.conf'), this.destinationPath('packaging/targets/trusty/etc/init/' + ppaContext.appName), ppaContext)
+    this.fs.copyTpl(this.templatePath('packagingTemplate/targets/trusty/etc/init/_mediator.conf'), this.destinationPath('packaging/targets/trusty/etc/init/' + ppaContext.appName + '.conf'), ppaContext)
     this.fs.copyTpl(this.templatePath('packagingTemplate/targets/trusty/debian/_config'), this.destinationPath('packaging/targets/trusty/debian/config'))
     this.fs.copyTpl(this.templatePath('packagingTemplate/targets/trusty/debian/_install'), this.destinationPath('packaging/targets/trusty/debian/install'))
     this.fs.copyTpl(this.templatePath('packagingTemplate/targets/trusty/debian/_rules'), this.destinationPath('packaging/targets/trusty/debian/rules'))

@@ -31,18 +31,18 @@ exports.promptsList = (enablePrompts, nameProvided, descriptionProvided) => {
     }, {
       when: enablePrompts,
       type: 'confirm',
-      name: 'localMediator',
+      name: 'nonLocalMediator',
       message: 'Will this mediator be run alongside the OpenHIM?', 
-      default: true 
+      default: false
     }, {
-      when: function (response) { return !response.localMediator },
+      when: function (response) { return response.nonLocalMediator },
       type: 'input', 
       name: 'mediatorHost', 
       message: 'What is your mediator\'s ip address?',
       default: 'xx.xx.xx.xx',
       validate: function(mediatorHost) { return mediatorHost==='xx.xx.xx.xx' ? false : true }
     }, {
-      when: function (response) { return !response.localMediator },
+      when: function (response) { return response.nonLocalMediator },
       type: 'input',
       name: 'mediatorApiUrl',
       message: 'Enter the URL for the OpenHIM API:',
