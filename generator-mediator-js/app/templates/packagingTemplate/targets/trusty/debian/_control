@@ -4,7 +4,6 @@ Section: web
 Priority: optional
 Standards-Version: 3.9.1
 Build-Depends: debhelper (>= 7)
-Homepage: https://github.com/jembi/<%= appName %>
 
 
 Package: <%= appName %>
