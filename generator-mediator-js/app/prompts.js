@@ -5,61 +5,55 @@ var config = require('./config')
 exports.promptsList = (enablePrompts) => {
   var list = [
     {
-      when: function() { return enablePrompts },
-      type: 'confirm',
-      name: 'enablePrompts',
-      message: 'Would you like to be prompted for config?',
-      default: config.enablePrompts
-    }, {
-      when: function(response) { return response.enablePrompts },
+      when: enablePrompts,
       type: 'input', 
       name: 'mediatorName',
       message: 'What is your Mediator\'s name?',
       default: config.mediatorName
     }, {
-      when: function(response) { return response.enablePrompts },
+      when: enablePrompts,
       type: 'input', 
       name: 'mediatorDesc', 
       message: 'What does your Mediator do?',
       default: config.mediatorDesc
     }, {
-      when: function(response) { return response.enablePrompts },
+      when: enablePrompts,
       type: 'input', 
       name: 'mediatorAuthor', 
       message: 'Who is the author of this mediator?',
       default: config.mediatorAuthor
     }, {
-      when: function(response) { return response.enablePrompts },
+      when: enablePrompts,
       type: 'input', 
       name: 'mediatorMaintainer', 
       message: 'Who is the maintainer of the mediator?',
       default: config.mediatorMaintainer
     }, {
-      when: function(response) { return response.enablePrompts },
+      when: enablePrompts,
       type: 'input', 
       name: 'configPort', 
       message: 'Under what port number should the mediator run?', 
       default: config.configPort 
     }, {
-      when: function(response) { return response.enablePrompts },
+      when: enablePrompts,
       type: 'input', 
       name: 'defaultChannelPath', 
       message: 'What is your default channel path?',
       default: config.defaultChannelPath
     }, {
-      when: function(response) { return response.enablePrompts },
+      when: enablePrompts,
       type: 'input', 
       name: 'mediatorRouteHost', 
       message: 'What is your mediator ip address?',
       default: config.mediatorRouteHost
     }, {
-      when: function(response) { return response.enablePrompts },
+      when: enablePrompts,
       type: 'input', 
       name: 'mediatorRoutePath', 
       message: 'What is your primary route path?',
       default: config.mediatorRoutePath
     }, {
-      when: function(response) { return response.enablePrompts },
+      when: enablePrompts,
       name: 'configureApi',
       type: 'confirm',
       message: 'Would you like to change the default OpenHIM API settings?',
@@ -95,7 +89,7 @@ exports.promptsList = (enablePrompts) => {
       message: 'Would you like the mediator to register itself with the OpenHIM?',
       default: config.mediatorApiRegister
     }, {
-      when: function(response) { return response.enablePrompts },
+      when: enablePrompts,
       name: 'enablePPA',
       type: 'confirm',
       message: 'Would you like to package your app?',
