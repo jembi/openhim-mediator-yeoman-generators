@@ -1,0 +1,7 @@
+node_modules/
+*.log
+packaging/.gnupg
+packaging/.npm
+packaging/builds/*
+packaging/.gitconfig
+packaging/builds
