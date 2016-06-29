@@ -2,6 +2,8 @@
   "mediatorAuthor":"Jembi Health Systems NPC",
   "mediatorMaintainer":"Name Surname <email@exchange.com> (https://github.com/githubusername)",
   "configPort":7000,
+  "nonLocalMediator":false,
+  
   "mediatorHost":"localhost",
   "defaultChannelPath":"channelPath",
   "mediatorPath":"routePath",

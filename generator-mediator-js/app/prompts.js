@@ -25,6 +25,13 @@ exports.promptsList = (enablePrompts, nameProvided, descriptionProvided) => {
     }, {
       when: enablePrompts,
       type: 'input', 
+      name: 'mediatorMaintainer', 
+      message: 'Who is the maintainer of this mediator?',
+      default: config.mediatorMaintainer,
+      validate: function(mediatorMaintainer) { return mediatorMaintainer.split(" ")[0]==="Name" ? false : true }
+    }, {
+      when: enablePrompts,
+      type: 'input', 
       name: 'configPort', 
       message: 'What port number would you like the mediator to run on?', 
       default: config.configPort 
