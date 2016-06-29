@@ -3,7 +3,6 @@
 const tap = require('tap')
 const openhimMock = require('./openhim-mock')
 const mediatorMock = require('../lib/index')
-const utils = require('openhim-mediator-utils')
 
 tap.test('Test server start', (t) => {
   openhimMock.start(() => {

@@ -27,7 +27,7 @@ const server = https.createServer(options, function (req, res) {
     let url = URL.parse(req.url)
     if (url.path === '/mediators') {
       res.writeHead(201)
-      res.end(JSON.stringify({response:'Ok'}))
+      res.end(JSON.stringify({ response: 'Ok' }))
     } else if (url.path === '/authenticate/root@openhim.org') {
       res.writeHead(200)
       res.end(JSON.stringify({
@@ -36,7 +36,7 @@ const server = https.createServer(options, function (req, res) {
       }))
     } else if (url.path.split('/')[3] === 'heartbeat') {
       res.writeHead(200)
-      res.end(JSON.stringify({response:'Ok'}))
+      res.end(JSON.stringify({ response: 'Ok' }))
     } else {
       winston.info('Error: no path matched')
       res.writeHead(500)

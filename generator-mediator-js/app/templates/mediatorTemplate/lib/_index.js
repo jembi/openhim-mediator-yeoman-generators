@@ -8,8 +8,7 @@ const utils = require('./utils')
 
 // Config
 var config = {} // this will vary depending on whats set in openhim-core
-console.log(process.env.NODE_ENV==="test")
-const apiConf = process.env.NODE_ENV==="test" ? require('../config/test') : require('../config/config')
+const apiConf = process.env.NODE_ENV === 'test' ? require('../config/test') : require('../config/config')
 const mediatorConfig = require('../config/mediator')
 
 var port = mediatorConfig.endpoints[0].port
@@ -28,7 +27,7 @@ function setupApp () {
     var headers = { 'content-type': 'application/json' }
 
     // add logic to alter the request here
-    
+
     // capture orchestration data
     var orchestrationResponse = { statusCode: 200, headers: headers }
     let orchestrations = []
@@ -73,16 +72,16 @@ function start (callback) {
           console.log('Successfully registered mediator!')
           let app = setupApp()
           const server = app.listen(port, () => {
-            if(apiConf.heartbeat) {
+            if (apiConf.heartbeat) {
               let configEmitter = medUtils.activateHeartbeat(apiConf.api)
               configEmitter.on('config', (newConfig) => {
                 console.log('Received updated config:')
                 console.log(JSON.stringify(newConfig))
                 // set new config for mediator
                 config = newConfig
-                
+
                 // we can act on the new config received from the OpenHIM here
-                
+                console.log(config)
               })
             }
             callback(server)
