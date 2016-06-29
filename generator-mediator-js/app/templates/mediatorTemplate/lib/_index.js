@@ -31,7 +31,7 @@ function setupApp () {
     // capture orchestration data
     var orchestrationResponse = { statusCode: 200, headers: headers }
     let orchestrations = []
-    orchestrations.push(utils.buildOrchestration('Primary Route', new Date().getTime(), req.method, req.url, req.body, orchestrationResponse, responseBody))
+    orchestrations.push(utils.buildOrchestration('Primary Route', new Date().getTime(), req.method, req.url, req.headers, req.body, orchestrationResponse, responseBody))
 
     // set content type header so that OpenHIM knows how to handle the response
     res.set('Content-Type', 'application/json+openhim')

@@ -1,12 +1,13 @@
 'use strict'
 const URI = require('urijs')
 
-exports.buildOrchestration = (name, beforeTimestamp, method, url, requestContent, res, body) => {
+exports.buildOrchestration = (name, beforeTimestamp, method, url, requestHeaders, requestContent, res, body) => {
   let uri = new URI(url)
   return {
     name: name,
     request: {
       method: method,
+      headers: requestHeaders,
       body: requestContent,
       timestamp: beforeTimestamp,
       path: uri.path(),
