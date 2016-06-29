@@ -5,8 +5,8 @@
   "main": "lib/index.js",
   "scripts": {
     "start": "node lib/index.js",
-    "test": "npm -s run test:code && npm -s run test:style",
-    "test:code": "tap --cov --reporter=spec test/unit.js test/integration.js test/openhim.js",
+    "test": "export NODE_ENV=test && npm -s run test:code && npm -s run test:style",
+    "test:code": "tap --cov --reporter=spec test/basic.js",
     "test:style": "standard -v | snazzy",
     "cov": "npm run test:code -- --coverage-report=lcov",
     "test:watch": "onchange '**/*.js' -- npm test"

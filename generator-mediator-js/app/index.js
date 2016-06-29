@@ -86,8 +86,13 @@ var mediatorJsGenerator = generator.Base.extend({
     this.fs.copyTpl(this.templatePath('mediatorTemplate/_README.md'), this.destinationPath('README.md'), mediatorContext)
     this.fs.copyTpl(this.templatePath('mediatorTemplate/config/_mediator.json'), this.destinationPath('config/mediator.json'), mediatorContext)
     this.fs.copyTpl(this.templatePath('mediatorTemplate/config/_config.json'), this.destinationPath('config/config.json'), apiContext)
+    this.fs.copyTpl(this.templatePath('mediatorTemplate/config/_test.json'), this.destinationPath('config/test.json'), apiContext)
     this.fs.copyTpl(this.templatePath('mediatorTemplate/lib/_index.js'), this.destinationPath('lib/index.js'))
     this.fs.copyTpl(this.templatePath('mediatorTemplate/lib/_utils.js'), this.destinationPath('lib/utils.js'))
+    this.fs.copyTpl(this.templatePath('mediatorTemplate/test/_basic.js'), this.destinationPath('test/basic.js'))
+    this.fs.copyTpl(this.templatePath('mediatorTemplate/test/_openhim-mock.js'), this.destinationPath('test/openhim-mock.js'))
+    this.fs.copyTpl(this.templatePath('mediatorTemplate/test/tls-certs/_key.pem'), this.destinationPath('test/tls-certs/key.pem'))
+    this.fs.copyTpl(this.templatePath('mediatorTemplate/test/tls-certs/_cert.pem'), this.destinationPath('test/tls-certs/cert.pem'))
     
     // Add the PPA files
     this.fs.copyTpl(this.templatePath('packagingTemplate/_.dput.cf'), this.destinationPath('packaging/.dput.cf'), ppaContext)
