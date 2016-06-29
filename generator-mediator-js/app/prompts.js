@@ -32,7 +32,7 @@ exports.promptsList = (enablePrompts, nameProvided, descriptionProvided) => {
       when: enablePrompts,
       type: 'confirm',
       name: 'nonLocalMediator',
-      message: 'Will this mediator be run alongside the OpenHIM?', 
+      message: 'Will this mediator be run on a different server to the OpenHIM?', 
       default: false
     }, {
       when: function (response) { return response.nonLocalMediator },
@@ -40,14 +40,20 @@ exports.promptsList = (enablePrompts, nameProvided, descriptionProvided) => {
       name: 'mediatorHost', 
       message: 'What is your mediator\'s ip address?',
       default: 'xx.xx.xx.xx',
-      validate: function(mediatorHost) { return mediatorHost==='xx.xx.xx.xx' ? false : true }
+      validate: function(mediatorHost) {
+        var regexp = new RegExp('^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$')
+        return mediatorHost.match(regexp) ? true : false 
+      }
     }, {
       when: function (response) { return response.nonLocalMediator },
       type: 'input',
       name: 'mediatorApiUrl',
       message: 'Enter the URL for the OpenHIM API:',
       default: 'https://xx.xx.xx.xx:8080',
-      validate: function(mediatorApiUrl) { return mediatorApiUrl==='https://xx.xx.xx.xx:8080' ? false : true }
+      validate: function(mediatorApiUrl) {
+        var regexp = new RegExp('^http(?:s|):\/\/(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?):[0-9]{1,}$')
+        return mediatorApiUrl.match(regexp) ? true : false
+      }
     }, {
       when: enablePrompts,
       type: 'input', 
@@ -79,7 +85,7 @@ exports.promptsList = (enablePrompts, nameProvided, descriptionProvided) => {
       message: 'Enter your password for the API:',
       default: config.mediatorApiPassword
     }, {
-      when: function (response) { return response.configureApi && response.localMediator },
+      when: function (response) { return response.configureApi && !response.nonLocalMediator },
       type: 'input',
       name: 'mediatorApiUrl',
       message: 'Enter the URL for the OpenHIM API:',
