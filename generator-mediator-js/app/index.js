@@ -93,18 +93,20 @@ var mediatorJsGenerator = generator.Base.extend({
     this.fs.copyTpl(this.templatePath('mediatorTemplate/test/tls-certs/_cert.pem'), this.destinationPath('test/tls-certs/cert.pem'))
     
     // Add the PPA files
-    this.fs.copyTpl(this.templatePath('packagingTemplate/_.dput.cf'), this.destinationPath('packaging/.dput.cf'), ppaContext)
-    this.fs.copyTpl(this.templatePath('packagingTemplate/_cp-mediators-into-pkg.sh'), this.destinationPath('packaging/cp-mediators-into-pkg.sh'), ppaContext)
-    this.fs.copyTpl(this.templatePath('packagingTemplate/_create-deb.sh'), this.destinationPath('packaging/create-deb.sh'), ppaContext)
-    this.fs.copyTpl(this.templatePath('packagingTemplate/targets/trusty/debian/_changelog'), this.destinationPath('packaging/targets/trusty/debian/changelog'), ppaContext)
-    this.fs.copyTpl(this.templatePath('packagingTemplate/targets/trusty/debian/_control'), this.destinationPath('packaging/targets/trusty/debian/control'), ppaContext)
-    this.fs.copyTpl(this.templatePath('packagingTemplate/targets/trusty/debian/_postinst'), this.destinationPath('packaging/targets/trusty/debian/postinst'), ppaContext)
-    this.fs.copyTpl(this.templatePath('packagingTemplate/targets/trusty/etc/init/_mediator.conf'), this.destinationPath('packaging/targets/trusty/etc/init/' + ppaContext.appName + '.conf'), ppaContext)
-    this.fs.copyTpl(this.templatePath('packagingTemplate/targets/trusty/debian/_config'), this.destinationPath('packaging/targets/trusty/debian/config'))
-    this.fs.copyTpl(this.templatePath('packagingTemplate/targets/trusty/debian/_install'), this.destinationPath('packaging/targets/trusty/debian/install'))
-    this.fs.copyTpl(this.templatePath('packagingTemplate/targets/trusty/debian/_rules'), this.destinationPath('packaging/targets/trusty/debian/rules'))
-    this.fs.copyTpl(this.templatePath('packagingTemplate/targets/trusty/debian/_templates'), this.destinationPath('packaging/targets/trusty/debian/templates'))
-    this.fs.copyTpl(this.templatePath('packagingTemplate/targets/trusty/etc/openhim/_install-node-4.sh'), this.destinationPath('packaging/targets/trusty/etc/openhim/install-node-4.sh'))
+    if(this.enablePPA) {
+      this.fs.copyTpl(this.templatePath('packagingTemplate/_.dput.cf'), this.destinationPath('packaging/.dput.cf'), ppaContext)
+      this.fs.copyTpl(this.templatePath('packagingTemplate/_cp-mediators-into-pkg.sh'), this.destinationPath('packaging/cp-mediators-into-pkg.sh'), ppaContext)
+      this.fs.copyTpl(this.templatePath('packagingTemplate/_create-deb.sh'), this.destinationPath('packaging/create-deb.sh'), ppaContext)
+      this.fs.copyTpl(this.templatePath('packagingTemplate/targets/trusty/debian/_changelog'), this.destinationPath('packaging/targets/trusty/debian/changelog'), ppaContext)
+      this.fs.copyTpl(this.templatePath('packagingTemplate/targets/trusty/debian/_control'), this.destinationPath('packaging/targets/trusty/debian/control'), ppaContext)
+      this.fs.copyTpl(this.templatePath('packagingTemplate/targets/trusty/debian/_postinst'), this.destinationPath('packaging/targets/trusty/debian/postinst'), ppaContext)
+      this.fs.copyTpl(this.templatePath('packagingTemplate/targets/trusty/etc/init/_mediator.conf'), this.destinationPath('packaging/targets/trusty/etc/init/' + ppaContext.appName + '.conf'), ppaContext)
+      this.fs.copyTpl(this.templatePath('packagingTemplate/targets/trusty/debian/_config'), this.destinationPath('packaging/targets/trusty/debian/config'))
+      this.fs.copyTpl(this.templatePath('packagingTemplate/targets/trusty/debian/_install'), this.destinationPath('packaging/targets/trusty/debian/install'))
+      this.fs.copyTpl(this.templatePath('packagingTemplate/targets/trusty/debian/_rules'), this.destinationPath('packaging/targets/trusty/debian/rules'))
+      this.fs.copyTpl(this.templatePath('packagingTemplate/targets/trusty/debian/_templates'), this.destinationPath('packaging/targets/trusty/debian/templates'))
+      this.fs.copyTpl(this.templatePath('packagingTemplate/targets/trusty/etc/openhim/_install-node-4.sh'), this.destinationPath('packaging/targets/trusty/etc/openhim/install-node-4.sh'))
+    }
   },
 
   install: function () {
