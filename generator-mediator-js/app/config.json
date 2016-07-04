@@ -6,7 +6,6 @@
   
   "mediatorHost":"localhost",
   "defaultChannelPath":"channelPath",
-  "mediatorPath":"/mediatorPath",
 
   "configureApi": false,
   "mediatorApiUsername":"root@openhim.org",

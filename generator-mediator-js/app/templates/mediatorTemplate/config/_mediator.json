@@ -17,7 +17,6 @@
         {
           "name": "<%= mediatorName %> Route",
           "host": "<%= mediatorHost %>",
-          "path": "<%= mediatorPath %>",
           "port": "<%= configPort %>",
           "primary": true,
           "type": "http"
@@ -31,7 +30,7 @@
     {
       "name": "<%= mediatorName %> Route",
       "host": "<%= mediatorHost %>",
-      "path": "<%= mediatorPath %>",
+      "path": "/",
       "port": "<%= configPort %>",
       "primary": true,
       "type": "http"

@@ -69,12 +69,6 @@ exports.promptsList = (enablePrompts, nameProvided, descriptionProvided) => {
       default: config.defaultChannelPath
     }, {
       when: enablePrompts,
-      type: 'input', 
-      name: 'mediatorPath', 
-      message: 'What path should the mediator\'s default channel on the OpenHIM route requests to on the mediator?',
-      default: config.mediatorPath
-    }, {
-      when: enablePrompts,
       name: 'configureApi',
       type: 'confirm',
       message: 'Would you like to change the default OpenHIM API settings?',
