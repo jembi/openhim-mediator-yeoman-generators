@@ -30,7 +30,7 @@ yo mediator-js
 You will be prompted to enter the config needed to create the mediator, to use default config:
 
 ```bash
-yo mediator-js --useDefaults
+yo mediator-js --useDefaults --name="Mediator Name" --description="This is what my mediator does"
 ```
 
 
