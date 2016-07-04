@@ -27,7 +27,7 @@ function setupApp () {
   const app = express()
 
   app.all('*', (req, res) => {
-    winston.info(`Processing ${req.method} request on ${mediatorConfig.endpoints[0].path}`)
+    winston.info(`Processing ${req.method} request on ${req.url}`)
     var responseBody = 'Primary Route Reached'
     var headers = { 'content-type': 'application/json' }
 
