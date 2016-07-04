@@ -32,8 +32,3 @@ You will be prompted to enter the config needed to create the mediator, to use d
 ```bash
 yo mediator-js --useDefaults --name="Mediator Name" --description="This is what my mediator does"
 ```
-
-
-## License
-
-MIT
