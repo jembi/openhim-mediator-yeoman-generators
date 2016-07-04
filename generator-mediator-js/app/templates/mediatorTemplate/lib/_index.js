@@ -3,8 +3,13 @@
 
 const express = require('express')
 const medUtils = require('openhim-mediator-utils')
+const winston = require('winston')
 
 const utils = require('./utils')
+
+// Logging setup
+winston.remove(winston.transports.Console)
+winston.add(winston.transports.Console, {level: 'info', timestamp: true, colorize: true})
 
 // Config
 var config = {} // this will vary depending on whats set in openhim-core
@@ -22,7 +27,7 @@ function setupApp () {
   const app = express()
 
   app.all('*', (req, res) => {
-    console.log(`Processing ${req.method} request on ${mediatorConfig.endpoints[0].path}`)
+    winston.info(`Processing ${req.method} request on ${mediatorConfig.endpoints[0].path}`)
     var responseBody = 'Primary Route Reached'
     var headers = { 'content-type': 'application/json' }
 
@@ -55,33 +60,33 @@ function start (callback) {
   if (apiConf.register) {
     medUtils.registerMediator(apiConf.api, mediatorConfig, (err) => {
       if (err) {
-        console.log('Failed to register this mediator, check your config')
-        console.log(err.stack)
+        winston.error('Failed to register this mediator, check your config')
+        winston.error(err.stack)
         process.exit(1)
       }
       apiConf.api.urn = mediatorConfig.urn
       medUtils.fetchConfig(apiConf.api, (err, newConfig) => {
-        console.log('Received initial config:')
-        console.log(JSON.stringify(newConfig))
+        winston.info('Received initial config:')
+        winston.info(JSON.stringify(newConfig))
         config = newConfig
         if (err) {
-          console.log('Failed to fetch initial config')
-          console.log(err.stack)
+          winston.error('Failed to fetch initial config')
+          winston.error(err.stack)
           process.exit(1)
         } else {
-          console.log('Successfully registered mediator!')
+          winston.info('Successfully registered mediator!')
           let app = setupApp()
           const server = app.listen(port, () => {
             if (apiConf.heartbeat) {
               let configEmitter = medUtils.activateHeartbeat(apiConf.api)
               configEmitter.on('config', (newConfig) => {
-                console.log('Received updated config:')
-                console.log(JSON.stringify(newConfig))
+                winston.info('Received updated config:')
+                winston.info(JSON.stringify(newConfig))
                 // set new config for mediator
                 config = newConfig
 
                 // we can act on the new config received from the OpenHIM here
-                console.log(config)
+                winston.info(config)
               })
             }
             callback(server)
@@ -100,5 +105,5 @@ exports.start = start
 
 if (!module.parent) {
   // if this script is run directly, start the server
-  start(() => console.log(`Listening on ${port}...`))
+  start(() => winston.info(`Listening on ${port}...`))
 }

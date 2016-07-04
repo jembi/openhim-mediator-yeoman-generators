@@ -1,8 +1,8 @@
 'use strict'
 
 const tap = require('tap')
-const openhimMock = require('./openhim-mock')
 const mediatorMock = require('../lib/index')
+const openhimMock = require('./openhim-mock')
 
 tap.test('Test server start', (t) => {
   openhimMock.start(() => {

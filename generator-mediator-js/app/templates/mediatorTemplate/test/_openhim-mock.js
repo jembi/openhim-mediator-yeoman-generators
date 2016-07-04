@@ -5,9 +5,6 @@ const URL = require('url')
 const winston = require('winston')
 const fs = require('fs')
 
-// don't log during tests - comment these out for debugging
-winston.remove(winston.transports.Console)
-
 var options = {
   key: fs.readFileSync('./test/tls-certs/key.pem'),
   cert: fs.readFileSync('./test/tls-certs/cert.pem'),
