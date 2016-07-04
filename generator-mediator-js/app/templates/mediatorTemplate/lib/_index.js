@@ -11,7 +11,7 @@ var config = {} // this will vary depending on whats set in openhim-core
 const apiConf = process.env.NODE_ENV === 'test' ? require('../config/test') : require('../config/config')
 const mediatorConfig = require('../config/mediator')
 
-var port = mediatorConfig.endpoints[0].port
+var port = process.env.NODE_ENV === 'test' ? 7001 : mediatorConfig.endpoints[0].port
 
 /**
  * setupApp - configures the http server for this mediator

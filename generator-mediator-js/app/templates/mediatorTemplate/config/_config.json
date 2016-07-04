@@ -5,6 +5,6 @@
     "apiURL": "<%= mediatorApiUrl %>",
     "trustSelfSigned": "<%= mediatorApiSsl %>"
   },
-  "register": "<%= mediatorRegister %>",
+  "register": <%= mediatorRegister %>,
   "heartbeat": true
 }
