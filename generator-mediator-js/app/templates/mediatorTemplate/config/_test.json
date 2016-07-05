@@ -1,0 +1,10 @@
+{
+  "api": {
+    "username": "<%= mediatorApiUsername %>",
+    "password": "<%= mediatorApiPassword %>",
+    "apiURL": "https://localhost:8081",
+    "trustSelfSigned": "<%= mediatorApiSsl %>"
+  },
+  "register": false,
+  "heartbeat": false
+}

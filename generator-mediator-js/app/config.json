@@ -1,0 +1,19 @@
+{
+  "mediatorAuthor":"Jembi Health Systems NPC",
+  "mediatorMaintainer":"Name Surname <email@exchange.com> (https://github.com/githubusername)",
+  "configPort":7000,
+  "nonLocalMediator":false,
+  
+  "mediatorHost":"localhost",
+  "defaultChannelPath":"channelPath",
+
+  "configureApi": false,
+  "mediatorApiUsername":"root@openhim.org",
+  "mediatorApiPassword":"password",
+  "mediatorApiUrl":"https://localhost:8080",
+  "mediatorApiSsl":true,
+  "mediatorRegister":true,
+  
+  "enablePPA":false,
+  "ppaUsername":"openhie"
+}

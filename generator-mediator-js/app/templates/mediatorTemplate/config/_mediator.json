@@ -1,12 +1,12 @@
 {
   "urn": "<%= mediatorUUID %>",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "name": "<%= mediatorName %>",
   "description": "<%= mediatorDesc %>",
   "defaultChannelConfig": [
     {
       "name": "<%= mediatorName %>",
-      "urlPattern": "/sample-pattern",
+      "urlPattern": "<%= defaultChannelPath %>",
       "alerts": [],
       "txRerunAcl": [],
       "txViewFullAcl": [],
@@ -16,8 +16,7 @@
       "routes": [
         {
           "name": "<%= mediatorName %> Route",
-          "host": "localhost",
-          "path": "<%= mediatorRoutePath %>",
+          "host": "<%= mediatorHost %>",
           "port": "<%= configPort %>",
           "primary": true,
           "type": "http"
@@ -30,11 +29,23 @@
   "endpoints": [
     {
       "name": "<%= mediatorName %> Route",
-      "host": "localhost",
-      "path": "<%= mediatorRoutePath %>",
+      "host": "<%= mediatorHost %>",
+      "path": "/",
       "port": "<%= configPort %>",
       "primary": true,
       "type": "http"
     }
-  ]
+  ],
+  "configDefs": [
+    {
+      "param": "upstreamUrl",
+      "displayName": "Upstream URL",
+      "description": "The URL of the service upstream of the mediator",
+      "type": "string",
+      "template": []
+    }
+  ],
+  "config": {
+    "upstreamUrl": "http://sampleApplication:7001"
+  }
 }
